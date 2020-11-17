@@ -1,6 +1,28 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+
+Route::get('/question', function (Request $request) {
+
+    if (!$request->filled('id')) {
+        return response('Ein Fehler ist aufgetreten, da keine id übergeben wurde', Response::HTTP_NOT_FOUND);
+    } elseif ($request->file === 'true' && $request->filled(['id', 'question'])) {
+        $id = $request->id;
+        $newname = $id . '.png';
+
+        return response()->download('assets/image/Success.png', $newname);
+    } elseif ($request->has('id') && !$request->filled('question')) {
+
+        return redirect()->away('https://webmasters-fernakademie.de');
+    } elseif ($request->filled(['id', 'question']) && $request->file !== 'true') {
+        return 'Ihre Frage wurde erfolgreich gespeichert';
+    };
+
+
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +84,9 @@ Route::get('/helloworldController', [App\Http\Controllers\TestController::class,
 Route::get('/user/{id?}', [App\Http\Controllers\TestController::class, 'printUserId']);
 
 Route::get('/nachname/{nachname}/name/{name}', [App\Http\Controllers\TestController::class, 'printGanzerName']);
+
+Route::get('/zeigeTeilnehmer', [App\Http\Controllers\CertificateController::class, 'namelist']);
+
 
 use App\Http\Controllers\CertificateController; 
 Route::resource('certificates', CertificateController::class)->only(

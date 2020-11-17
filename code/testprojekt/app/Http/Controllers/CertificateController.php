@@ -5,7 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 class CertificateController extends Controller
-{
+{   
+    
+    public function namelist()
+    {
+        $alleTeilnehmer = ['jochen', 'jan', 'jennifer', 'jürgen', 'josephine', 'jens', 'john', 'joachim', 'johannes', 'jerome',];
+
+        return view('teilnehmerliste', compact('alleTeilnehmer'));
+
+    }
+
+
     // public function index()
     // {
     //     return 'Alle Zertifikat werden returned';
@@ -18,7 +28,14 @@ class CertificateController extends Controller
      */
     public function create()
     {
-        return 'Neues Zertifikat erstellt';
+        $user = 'Holger';
+        $framework ='React';
+        // return view('zertifikat_erstellen', ['user' => $user]);
+        // return view('zertifikat_erstellen', ['user' => $user, 'framework' => 'Laravel']);
+        // return view('zertifikat_erstellen')->with('user', $user);
+        // return view('zertifikat_erstellen')->with(['user' => $user]);
+        return view('zertifikat_erstellen', compact('user', 'framework'));
+ 
     }
 
     /**
