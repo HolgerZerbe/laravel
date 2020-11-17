@@ -41,12 +41,18 @@ Route::get('/allProducts/{id}', function ($id = null) {
 
 
 // ACHTUNG: Seit Laravel 8 sind nur noch absolute Pfade erlaubt,
+// die bis Laravel 7 gültige Angabe von relativen Pfaden wie 
+
+// Route::get('/hellowordController', 'TestController@printMessage')
+
+// ist nicht mehr zulässig
+
 // siehe auch https://laracasts.com/discuss/channels/code-review/illuminatecontractscontainerbindingresolutionexception-target-class-usercontroller-does-not-exist?signup
 
 // Hier die Lösung:
 
 // use App\Http\Controllers\TestController;
-// Route::get('/helloworldController', [TestController::class, 'printmessage']);
+// Route::get('/helloworldController', [TestController::class, 'printMessage']);
 
 
 // oder alternativ verkürzt:
