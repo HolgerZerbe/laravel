@@ -89,6 +89,8 @@ Route::get('/zeigeTeilnehmer', [App\Http\Controllers\CertificateController::clas
 
 Route::get('/zeigeTelefonnummer', [App\Http\Controllers\CertificateController::class, 'phonelist'])->name('Telefon');
 
+Route::get('/zeigeTemplate', [App\Http\Controllers\CertificateController::class, 'template']);
+
 
 use App\Http\Controllers\CertificateController; 
 Route::resource('certificates', CertificateController::class)->only(

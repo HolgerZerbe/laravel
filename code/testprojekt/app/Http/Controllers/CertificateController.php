@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 class CertificateController extends Controller
 {   
     
+    public function template() {
+
+        return view('child');
+    }
+
+
+
     public function namelist()
     {
         $alleTeilnehmer = ['jochen', 'jan', 'jennifer', 'jürgen', 'josephine', 'jens', 'john', 'joachim', 'johannes', 'jerome',];
