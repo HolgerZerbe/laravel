@@ -31,7 +31,7 @@
     </head>
     <body>
 
-    <div class='container'>
+    <!-- <div class='container'>
             <h1 class='headline1'>Teilnehmerliste</h1>
             <ul>
             <?php
@@ -42,6 +42,57 @@
                 <?php
             }
             ?> 
+            </ul>
+    </div> -->
+
+    <!-- <div class='container'>
+            <h1 class='headline1'>Teilnehmerliste</h1>
+            <ul>
+            @php 
+                $zaehler = 0;
+            @endphp
+
+            @foreach($alleTeilnehmer as $einzelneTeilnehmer)
+
+                @php
+                    $einzelneTeilnehmer=ucfirst($einzelneTeilnehmer);
+                @endphp
+
+                @unless ($zaehler < 5)
+                <li> {{ $einzelneTeilnehmer }} </li>
+                @endunless
+
+                @php
+                    $zaehler++;
+                @endphp
+
+            @endforeach
+                
+        
+            </ul>
+    </div> -->
+
+    <div class='container'>
+            <h1 class='headline1'>Teilnehmerliste</h1>
+            <ul>
+
+            @for($i=0; $i<count($alleTeilnehmer); $i++)
+
+                @if ($i>4)
+                @break
+                @endif
+
+
+                @php
+                    $alleTeilnehmer[$i]=ucfirst($alleTeilnehmer[$i]);
+                @endphp
+
+                <li> {{ $alleTeilnehmer[$i] }} </li>
+    
+
+            @endfor
+                
+        
             </ul>
     </div>
     </body>

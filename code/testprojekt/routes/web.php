@@ -85,7 +85,9 @@ Route::get('/user/{id?}', [App\Http\Controllers\TestController::class, 'printUse
 
 Route::get('/nachname/{nachname}/name/{name}', [App\Http\Controllers\TestController::class, 'printGanzerName']);
 
-Route::get('/zeigeTeilnehmer', [App\Http\Controllers\CertificateController::class, 'namelist']);
+Route::get('/zeigeTeilnehmer', [App\Http\Controllers\CertificateController::class, 'namelist'])->name('Teilnehmer');
+
+Route::get('/zeigeTelefonnummer', [App\Http\Controllers\CertificateController::class, 'phonelist'])->name('Telefon');
 
 
 use App\Http\Controllers\CertificateController; 
