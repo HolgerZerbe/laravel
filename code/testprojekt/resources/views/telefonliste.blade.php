@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Laravel</title> -->
 
   
 
-        <style>
+        <!-- <style>
             body {
                 font-family: 'Verdana';
                 margin: 0;
@@ -39,11 +39,11 @@
                 padding: 5px;
             }
 
-        </style>
-    </head>
-    <body>
+        </style> -->
+    <!-- </head>
+    <body> -->
  
- 
+<!--  
     <div class='container'>
             <h1 class='headline1'>Telefonliste</h1>
                 <p>Alter < 18 und keine Telefonnummer => grün<br>
@@ -76,8 +76,33 @@
         </table>
         
         
+    </div> -->
+
+
+    <!-- </body>
+</html> -->
+
+@extends('layouts.app')
+
+@section('content')
+    <div class="ui grid">
+        @foreach ($users as $user)
+            <div class="four wide column">
+                <div class="ui card">
+                    <div class="content">
+                        <p class="header"> {{$user['name']}}</p>
+                        <div class="description">{{$user['email']}}<br>Alter: {{$user['age']}}</div>
+                    </div>
+                    @isset($user['phone'])
+                    <div class="extra content">
+                        <a>
+                            <i class="phone icon"></i>
+                            {{$user['phone']}}
+                        </a>
+                    </div>
+                    @endisset
+                </div>
+            </div> 
+        @endforeach       
     </div>
-
-
-    </body>
-</html>
+@endsection

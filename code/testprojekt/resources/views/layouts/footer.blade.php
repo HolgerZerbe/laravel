@@ -1,0 +1,1 @@
+<h4>Dies ist der Footer von footer.blade.php</h4>

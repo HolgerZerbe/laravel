@@ -16,6 +16,6 @@
 @endsection
 
 @section('footer')
-<p>dies ist der Footer</p>
+<p>dies ist der Footer eingefügt mit '@ yield' von child.blade.php </p>
 
 @endsection
