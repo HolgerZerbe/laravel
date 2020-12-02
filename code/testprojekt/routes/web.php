@@ -98,3 +98,19 @@ Route::resource('certificates', CertificateController::class)->only(
     )->names (
         ['create' => 'certificates.certify']
     );
+
+Route::get('/posts', [App\Http\Controllers\InterestController::class, 'showPosts']);
+Route::get('/posts/count', [App\Http\Controllers\InterestController::class, 'countPosts']);
+Route::get('/posts/create/{title?}/{text}/{interest_id}', [App\Http\Controllers\InterestController::class, 'createPost']);
+Route::get('/posts/update6to10', [App\Http\Controllers\InterestController::class, 'updatePost6to10']);
+Route::get('/posts/desc', [App\Http\Controllers\InterestController::class, 'showPostsDescending']);
+Route::get('/posts/deleteNull', [App\Http\Controllers\InterestController::class, 'deleteNullPosts']);
+
+Route::get('/interests', [App\Http\Controllers\InterestController::class, 'index']);
+Route::get('/interests/create/{id}/{text}', [App\Http\Controllers\InterestController::class, 'create']);
+Route::get('/interests/delete/{id}', [App\Http\Controllers\InterestController::class, 'delete']);
+Route::get('/interests/fullfillData', [App\Http\Controllers\InterestController::class, 'fullfillData']);
+
+
+Route::redirect('/posts/create/{title}', '/posts/create/{title?}/null/null');
+Route::redirect('/posts/create/{title}/{text}', '/posts/create/{title?}/{text}/null');

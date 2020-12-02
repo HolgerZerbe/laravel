@@ -13,8 +13,16 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
+        // Schema::create('posts', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->timestamps();
+        // });
+
         Schema::create('posts', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('title');
+            $table->text('text')->nullable();
+            $table->integer('interest_id')->nullable();
             $table->timestamps();
         });
     }
