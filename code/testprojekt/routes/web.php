@@ -111,6 +111,12 @@ Route::get('/interests/create/{id}/{text}', [App\Http\Controllers\InterestContro
 Route::get('/interests/delete/{id}', [App\Http\Controllers\InterestController::class, 'delete']);
 Route::get('/interests/fullfillData', [App\Http\Controllers\InterestController::class, 'fullfillData']);
 
+Route::get('/articles', [App\Http\Controllers\Articles_InterestsController::class, 'show']);
+Route::get('/articles/onlyTrash', [App\Http\Controllers\Articles_InterestsController::class, 'showOnlyTrash']);
+Route::get('/articles/withTrash', [App\Http\Controllers\Articles_InterestsController::class, 'showWithTrash']);
+Route::get('/articles/create/{title}/{text}/{interest_id}', [App\Http\Controllers\Articles_InterestsController::class, 'create']);
+Route::get('/articles/destroy/{id}', [App\Http\Controllers\Articles_InterestsController::class, 'destroy']);
+
 
 Route::redirect('/posts/create/{title}', '/posts/create/{title?}/null/null');
 Route::redirect('/posts/create/{title}/{text}', '/posts/create/{title?}/{text}/null');

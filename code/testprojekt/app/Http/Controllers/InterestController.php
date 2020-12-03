@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -179,9 +180,12 @@ class InterestController extends Controller
     public function create($id, $text) {
         DB::insert('insert into interests (id, text) values (:id, :text)', ['id' => $id, 'text' => $text]);
     }
+
     public function delete($id) {
         $removed = DB::delete('delete from interests where id = ?', [$id]);
         return var_dump($removed);
 
     }
+  
+
 }
