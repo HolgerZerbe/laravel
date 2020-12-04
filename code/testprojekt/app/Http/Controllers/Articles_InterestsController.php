@@ -7,15 +7,23 @@ use App\Models\Article;
 
 class Articles_InterestsController extends Controller
 {
-    public function show() {
-        // $articles =  Article::get(); // ist äquivalent zu ::all()
-        $articles =  Article::all();
-        // $singleArticleByIdText = Article::whereId('8')->first()->text;
+    public function show($id = null) {
+
+        if (!$id) {
+
+            // $articles =  Article::get(); // ist äquivalent zu ::all()
+            $articles =  Article::all();
+            // $singleArticleByIdText = Article::whereId('8')->first()->text;
 
 
-        return dd($articles);
-        // return dd($singleArticleByIdText);
-    
+            return dd($articles);
+            // return dd($singleArticleByIdText);
+        }
+
+        else {
+            $article = Article::whereId($id)->first();
+            return dd($article);
+        }
     }
 
     public function ShowOnlyTrash() {
@@ -45,6 +53,15 @@ class Articles_InterestsController extends Controller
     public function destroy($id) {
         Article::destroy($id);
         return "Artikel mit der ID = $id gelöscht";
+    }
+
+    public function update($id, $neuerTitel, $neuerText, $neueInterest_id) {
+        $article = Article::whereId($id)->first();
+        $article->title = $neuerTitel;
+        $article->text = $neuerText;
+        $article->interest_id = $neueInterest_id;
+        $article->save();
+        return "Artikel mit der ID = $id geändert";
     }
 
 }

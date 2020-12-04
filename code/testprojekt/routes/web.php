@@ -101,7 +101,7 @@ Route::resource('certificates', CertificateController::class)->only(
 
 Route::get('/posts', [App\Http\Controllers\InterestController::class, 'showPosts']);
 Route::get('/posts/count', [App\Http\Controllers\InterestController::class, 'countPosts']);
-Route::get('/posts/create/{title?}/{text}/{interest_id}', [App\Http\Controllers\InterestController::class, 'createPost']);
+Route::get('/posts/create/{title}/{text}/{interest_id}', [App\Http\Controllers\InterestController::class, 'createPost']);
 Route::get('/posts/update6to10', [App\Http\Controllers\InterestController::class, 'updatePost6to10']);
 Route::get('/posts/desc', [App\Http\Controllers\InterestController::class, 'showPostsDescending']);
 Route::get('/posts/deleteNull', [App\Http\Controllers\InterestController::class, 'deleteNullPosts']);
@@ -111,11 +111,12 @@ Route::get('/interests/create/{id}/{text}', [App\Http\Controllers\InterestContro
 Route::get('/interests/delete/{id}', [App\Http\Controllers\InterestController::class, 'delete']);
 Route::get('/interests/fullfillData', [App\Http\Controllers\InterestController::class, 'fullfillData']);
 
-Route::get('/articles', [App\Http\Controllers\Articles_InterestsController::class, 'show']);
+Route::get('/articles/{id?}', [App\Http\Controllers\Articles_InterestsController::class, 'show']);
 Route::get('/articles/onlyTrash', [App\Http\Controllers\Articles_InterestsController::class, 'showOnlyTrash']);
 Route::get('/articles/withTrash', [App\Http\Controllers\Articles_InterestsController::class, 'showWithTrash']);
 Route::get('/articles/create/{title}/{text}/{interest_id}', [App\Http\Controllers\Articles_InterestsController::class, 'create']);
 Route::get('/articles/destroy/{id}', [App\Http\Controllers\Articles_InterestsController::class, 'destroy']);
+Route::get('/articles/update/{id}/{title}/{text}/{interest_id}', [App\Http\Controllers\Articles_InterestsController::class, 'update']);
 
 
 Route::redirect('/posts/create/{title}', '/posts/create/{title?}/null/null');
