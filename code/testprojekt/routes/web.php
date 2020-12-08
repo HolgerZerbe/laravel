@@ -114,12 +114,14 @@ Route::get('/interests/fullfillData', [App\Http\Controllers\InterestController::
 Route::get('/articles/{id?}', [App\Http\Controllers\Articles_InterestsController::class, 'show']);
 Route::get('/articles/onlyTrash', [App\Http\Controllers\Articles_InterestsController::class, 'showOnlyTrash']);
 Route::get('/articles/withTrash', [App\Http\Controllers\Articles_InterestsController::class, 'showWithTrash']);
-Route::get('/articles/create/{title}/{text}/{interest_id}', [App\Http\Controllers\Articles_InterestsController::class, 'create']);
+// Route::get('/articles/create/{title}/{text}/{interest_id}', [App\Http\Controllers\Articles_InterestsController::class, 'create']);
 Route::get('/articles/destroy/{id}', [App\Http\Controllers\Articles_InterestsController::class, 'destroy']);
-Route::get('/articles/update/{id}/{title}/{text}/{interest_id}', [App\Http\Controllers\Articles_InterestsController::class, 'update']);
+// Route::get('/articles/update/{id}/{title}/{text}/{interest_id}', [App\Http\Controllers\Articles_InterestsController::class, 'update']);
 
 Route::get('/article/create', [App\Http\Controllers\Articles_InterestsController::class, 'create']);
+Route::get('/article/update/{id}', [App\Http\Controllers\Articles_InterestsController::class, 'showUpdate']);
 Route::post('/article/store', [App\Http\Controllers\Articles_InterestsController::class, 'store']);
+Route::put('/article/storeUpdate', [App\Http\Controllers\Articles_InterestsController::class, 'storeUpdate']);
 
 
 Route::redirect('/posts/create/{title}', '/posts/create/{title?}/null/null');

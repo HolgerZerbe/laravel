@@ -20,7 +20,7 @@
 
             <form action="/article/store" method="POST" class="form-horizontal">
                     {{ csrf_field() }}
-                    <!-- <input type="hidden" name="id" class="form-control" value=""> -->
+                    <input type="hidden" name="id" class="form-control" value="">
                     <input type="text" name="title" class="form-control" placeholder="title">
                     <input type="text" name="text" class="form-control" placeholder="text">
                     <input type="number" name="interest_id" class="form-control" min = 1 max = 6>

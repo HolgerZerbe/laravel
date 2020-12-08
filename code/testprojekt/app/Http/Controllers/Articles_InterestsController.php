@@ -63,7 +63,7 @@ class Articles_InterestsController extends Controller
         $article->interest_id = $_POST['interest_id'];
         $article->save();
         return redirect('articles');
-        
+
     }
 
 
@@ -72,13 +72,31 @@ class Articles_InterestsController extends Controller
         return "Artikel mit der ID = $id gelöscht";
     }
 
-    public function update($id, $neuerTitel, $neuerText, $neueInterest_id) {
+    // public function update($id, $neuerTitel, $neuerText, $neueInterest_id) {
+    //     $article = Article::whereId($id)->first();
+    //     $article->title = $neuerTitel;
+    //     $article->text = $neuerText;
+    //     $article->interest_id = $neueInterest_id;
+    //     $article->save();
+    //     return "Artikel mit der ID = $id geändert";
+    // }
+
+
+    public function showUpdate($id) {
         $article = Article::whereId($id)->first();
-        $article->title = $neuerTitel;
-        $article->text = $neuerText;
-        $article->interest_id = $neueInterest_id;
-        $article->save();
-        return "Artikel mit der ID = $id geändert";
+       
+        return view('update_article', compact('article'));
+
     }
 
+    public function storeUpdate() {
+        $article = Article::whereId($_POST['id'])->first();
+        $article->title = $_POST['title'];
+        $article->text = $_POST['text'];
+        $article->interest_id = intval($_POST['interest_id']);
+        $article->save();
+        return redirect("/articles/{$_POST['id']}");
+
+    }
 }
+
