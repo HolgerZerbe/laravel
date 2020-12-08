@@ -55,7 +55,20 @@ class Articles_InterestsController extends Controller
         return view('create_new_article');
     }
 
-    public function store() {
+    public function store(Request $request) {
+
+        $request->validate([
+            'title' => [
+                'required', 
+                function($attribute, $value, $fail) {
+                    if(strpos($value, 'Laravel') === false)
+                    {
+                        $fail($attribute . ' enthält nicht Laravel');
+                    }
+                }
+            ],
+            'text' => 'required',
+        ]);
 
         $article = new Article;
         $article->title = $_POST['title'];
