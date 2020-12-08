@@ -41,14 +41,31 @@ class Articles_InterestsController extends Controller
     }
 
 
-    public function create($neuerTitel, $neuerText, $neueInterest_id) {
+    // public function create($neuerTitel, $neuerText, $neueInterest_id) {
+
+    //     $article = new Article;
+    //     $article->title = $neuerTitel;
+    //     $article->text = $neuerText;
+    //     $article->interest_id = $neueInterest_id;
+    //     $article->save();
+    // }
+
+    public function create() {
+
+        return view('create_new_article');
+    }
+
+    public function store() {
 
         $article = new Article;
-        $article->title = $neuerTitel;
-        $article->text = $neuerText;
-        $article->interest_id = $neueInterest_id;
+        $article->title = $_POST['title'];
+        $article->text = $_POST['text'];
+        $article->interest_id = $_POST['interest_id'];
         $article->save();
+        return redirect('articles');
+        
     }
+
 
     public function destroy($id) {
         Article::destroy($id);

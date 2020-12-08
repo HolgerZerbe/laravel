@@ -118,6 +118,9 @@ Route::get('/articles/create/{title}/{text}/{interest_id}', [App\Http\Controller
 Route::get('/articles/destroy/{id}', [App\Http\Controllers\Articles_InterestsController::class, 'destroy']);
 Route::get('/articles/update/{id}/{title}/{text}/{interest_id}', [App\Http\Controllers\Articles_InterestsController::class, 'update']);
 
+Route::get('/article/create', [App\Http\Controllers\Articles_InterestsController::class, 'create']);
+Route::post('/article/store', [App\Http\Controllers\Articles_InterestsController::class, 'store']);
+
 
 Route::redirect('/posts/create/{title}', '/posts/create/{title?}/null/null');
 Route::redirect('/posts/create/{title}/{text}', '/posts/create/{title?}/{text}/null');
